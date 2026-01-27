@@ -24,12 +24,6 @@ const CookieBanner = () => {
     setIsVisible(false);
   };
 
-  const handleDecline = () => {
-    localStorage.setItem('synthlabs-cookie-consent', 'declined');
-    localStorage.setItem('synthlabs-cookie-date', new Date().toISOString());
-    setIsVisible(false);
-  };
-
   const handleClose = () => {
     setIsVisible(false);
   };
@@ -92,12 +86,6 @@ const CookieBanner = () => {
                     <div className="flex items-start gap-3">
                       <div className="w-5 h-5 rounded bg-synth-blue/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                         <Cookie className="w-3 h-3 text-synth-blue" />
-                      </div>
-                      <div>
-                        <span className="text-white text-sm font-medium">Analytics</span>
-                        <p className="text-synth-gray text-xs">
-                          Help us understand how visitors interact with our website.
-                        </p>
                       </div>
                     </div>
                   </div>
