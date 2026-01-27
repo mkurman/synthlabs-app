@@ -87,8 +87,8 @@ const LogoEcosystem = () => {
                 className="flex-shrink-0 flex items-center gap-3 px-6 py-3 glass rounded-full hover:bg-white/10 transition-colors cursor-default group"
               >
                 <div
-                  className="w-3 h-3 rounded-full"
-                  style={{ backgroundColor: model.color, boxShadow: `0 0 10px ${model.color}, cursor: pointer` }}
+                  className="w-3 h-3 rounded-full cursor-pointer"
+                  style={{ backgroundColor: model.color, boxShadow: `0 0 10px ${model.color}` }}
                 />
                 <span 
                   className="text-white/80 font-medium whitespace-nowrap group-hover:text-white transition-colors cursor-pointer"

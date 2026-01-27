@@ -93,11 +93,11 @@ const Screenshots = () => {
 
   const nextSlide = useCallback(() => {
     changeSlide((activeIndex + 1) % screenshots.length);
-  }, [activeIndex, changeSlide]);
+  }, [activeIndex, changeSlide, screenshots]);
 
   const prevSlide = useCallback(() => {
     changeSlide((activeIndex - 1 + screenshots.length) % screenshots.length);
-  }, [activeIndex, changeSlide]);
+  }, [activeIndex, changeSlide, screenshots]);
 
   // Keyboard navigation
   useEffect(() => {
