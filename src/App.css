@@ -1,0 +1,314 @@
+/* App-specific styles */
+
+/* Ensure smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Canvas container for Three.js */
+.canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Section animations */
+.animate-section {
+  opacity: 1;
+}
+
+/* Glass morphism enhancements */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-strong {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Text gradient animations */
+.text-gradient-blue {
+  background: linear-gradient(135deg, #3970ff 0%, #426dd8 50%, #3dffa9 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 8s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Glow effects */
+.shadow-glow {
+  box-shadow: 0 0 40px rgba(66, 109, 216, 0.3);
+}
+
+.shadow-glow-strong {
+  box-shadow: 0 0 60px rgba(66, 109, 216, 0.5);
+}
+
+/* Border glow */
+.border-glow {
+  border: 1px solid rgba(66, 109, 216, 0.3);
+  box-shadow: 
+    0 0 20px rgba(66, 109, 216, 0.1),
+    inset 0 0 20px rgba(66, 109, 216, 0.05);
+}
+
+/* Grid pattern */
+.grid-pattern {
+  background-image: 
+    linear-gradient(rgba(66, 109, 216, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(66, 109, 216, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.card-hover:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 40px rgba(66, 109, 216, 0.2);
+}
+
+/* Shimmer effect */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Floating animation */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Pulse glow animation */
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(66, 109, 216, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(66, 109, 216, 0.6);
+  }
+}
+
+/* Noise texture overlay */
+.noise-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Button magnetic effect placeholder */
+.magnetic-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.magnetic-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #426dd8, #3970ff);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.magnetic-btn:hover::before {
+  opacity: 1;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #060606;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #363636;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #426dd8;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(66, 109, 216, 0.3);
+  color: white;
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid #426dd8;
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .glass {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  
+  .grid-pattern {
+    background-size: 30px 30px;
+  }
+}
+
+/* Subtle Synth Data Glitch Effect - Very Light */
+.synth-glitch-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.4;
+}
+
+.synth-glitch-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 4px,
+    rgba(79, 70, 229, 0.008) 4px,
+    rgba(79, 70, 229, 0.008) 8px
+  );
+  animation: data-scan 15s linear infinite;
+}
+
+/* Occasional glitch line - very subtle */
+.synth-glitch-line-subtle {
+  position: absolute;
+  left: -100%;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(79, 70, 229, 0.15) 50%,
+    transparent 100%
+  );
+  animation: glitch-sweep 12s ease-in-out infinite;
+}
+
+.synth-glitch-line-subtle:nth-child(1) { top: 15%; animation-delay: 0s; }
+.synth-glitch-line-subtle:nth-child(2) { top: 40%; animation-delay: 4s; }
+.synth-glitch-line-subtle:nth-child(3) { top: 65%; animation-delay: 8s; }
+
+/* Tiny data artifacts */
+.synth-data-artifact {
+  position: absolute;
+  width: 20px;
+  height: 1px;
+  background: rgba(79, 70, 229, 0.1);
+  animation: artifact-flicker 8s ease-in-out infinite;
+}
+
+@keyframes data-scan {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(8px); }
+}
+
+@keyframes glitch-sweep {
+  0%, 95%, 100% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  96% {
+    opacity: 0.3;
+    transform: translateX(30%);
+  }
+  97% {
+    opacity: 0.1;
+    transform: translateX(50%);
+  }
+  98% {
+    opacity: 0.2;
+    transform: translateX(80%);
+  }
+  99% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+@keyframes artifact-flicker {
+  0%, 90%, 100% { opacity: 0; }
+  92% { opacity: 0.2; }
+  94% { opacity: 0.05; }
+  96% { opacity: 0.15; }
+}
