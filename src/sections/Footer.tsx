@@ -24,8 +24,8 @@ const Footer = () => {
     ],
     legal: [
       { label: 'License', href: 'https://github.com/mkurman/synthlabs/blob/main/LICENSE' },
-      { label: 'Privacy', href: 'https://github.com/mkurman/synthlabs/blob/main/PRIVACY.md' },
-      { label: 'Terms', href: 'https://github.com/mkurman/synthlabs/blob/main/TERMS.md' },
+      { label: 'Privacy', href: 'https://github.com/mkurman/synthlabs-app/blob/main/PRIVACY.md' },
+      { label: 'Terms', href: 'https://github.com/mkurman/synthlabs-app/blob/main/TERMS.md' },
     ],
   };
 

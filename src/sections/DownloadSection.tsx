@@ -260,9 +260,9 @@ const DownloadSection = () => {
         <div className="mt-12 text-center">
           <p className="text-synth-gray text-xs opacity-60">
             By downloading SynthLabs, you agree to our{' '}
-            <a href="https://github.com/mkurman/synthlabs/blob/main/TERMS.md" target="_blank" rel="noopener noreferrer" className="hover:text-white underline underline-offset-4">Terms of Use</a>
+            <a href="https://github.com/mkurman/synthlabs-app/blob/main/TERMS.md" target="_blank" rel="noopener noreferrer" className="hover:text-white underline underline-offset-4">Terms of Use</a>
             {' '}and acknowledge our{' '}
-            <a href="https://github.com/mkurman/synthlabs/blob/main/PRIVACY.md" target="_blank" rel="noopener noreferrer" className="hover:text-white underline underline-offset-4">Privacy Policy</a>.
+            <a href="https://github.com/mkurman/synthlabs-app/blob/main/PRIVACY.md" target="_blank" rel="noopener noreferrer" className="hover:text-white underline underline-offset-4">Privacy Policy</a>.
           </p>
         </div>
       </div>

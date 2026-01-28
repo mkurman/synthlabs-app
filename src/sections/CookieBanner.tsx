@@ -61,7 +61,7 @@ const CookieBanner = () => {
               <p className="text-synth-gray text-sm leading-relaxed mb-4">
                 SynthLabs is an open-source project that does not collect personal data or use cookies. 
                 We are committed to operating transparently and respecting your digital privacy. 
-                For more details, please review our <a href="https://github.com/mkurman/synthlabs/blob/main/PRIVACY.md" target="_blank" rel="noopener noreferrer" className="text-synth-blue hover:underline">Privacy Policy</a> and <a href="https://github.com/mkurman/synthlabs/blob/main/TERMS.md" target="_blank" rel="noopener noreferrer" className="text-synth-blue hover:underline">Terms of Use</a>.
+                For more details, please review our <a href="https://github.com/mkurman/synthlabs-app/blob/main/PRIVACY.md" target="_blank" rel="noopener noreferrer" className="text-synth-blue hover:underline">Privacy Policy</a> and <a href="https://github.com/mkurman/synthlabs-app/blob/main/TERMS.md" target="_blank" rel="noopener noreferrer" className="text-synth-blue hover:underline">Terms of Use</a>.
               </p>
 
               {/* Details Section */}
@@ -114,7 +114,7 @@ const CookieBanner = () => {
               <p className="text-synth-gray text-xs">
                 Review our{' '}
                 <a
-                  href="https://github.com/mkurman/synthlabs/blob/main/PRIVACY.md"
+                  href="https://github.com/mkurman/synthlabs-app/blob/main/PRIVACY.md"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-synth-blue hover:text-synth-blue-light transition-colors"
@@ -123,7 +123,7 @@ const CookieBanner = () => {
                 </a>{' '}
                 and{' '}
                 <a
-                  href="https://github.com/mkurman/synthlabs/blob/main/TERMS.md"
+                  href="https://github.com/mkurman/synthlabs-app/blob/main/TERMS.md"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-synth-blue hover:text-synth-blue-light transition-colors"
