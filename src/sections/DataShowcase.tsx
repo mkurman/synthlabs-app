@@ -7,14 +7,14 @@ import { Copy, Check, Database, FileJson, Terminal, Sparkles } from 'lucide-reac
 gsap.registerPlugin(ScrollTrigger);
 
 // Typing animation component
-const TypingText = ({ 
-  text, 
-  isActive, 
+const TypingText = ({
+  text,
+  isActive,
   onComplete,
   speed = 15,
   hideCursorOnComplete = false,
-}: { 
-  text: string; 
+}: {
+  text: string;
   isActive: boolean;
   onComplete?: () => void;
   speed?: number;
@@ -42,7 +42,7 @@ const TypingText = ({
       if (currentIndex < text.length) {
         setDisplayedText(text.slice(0, currentIndex + 1));
         currentIndex++;
-        
+
         // Variable speed for more natural feel
         const delay = Math.random() * speed + speed / 2;
         setTimeout(typeChar, delay);
@@ -64,7 +64,7 @@ const TypingText = ({
       setShowCursor(false);
       return;
     }
-    
+
     const interval = setInterval(() => {
       setShowCursor(prev => !prev);
     }, 530); // Classic terminal cursor blink rate
@@ -79,7 +79,7 @@ const TypingText = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           className="inline-block w-2.5 h-5 ml-0.5 bg-emerald-500 align-middle"
-          style={{ 
+          style={{
             boxShadow: '0 0 10px rgba(16, 185, 129, 0.8), 0 0 20px rgba(16, 185, 129, 0.4)',
           }}
         />
@@ -89,12 +89,12 @@ const TypingText = ({
 };
 
 // Animated reasoning trace component
-const ReasoningTrace = ({ 
-  reasoning, 
+const ReasoningTrace = ({
+  reasoning,
   isActive,
   isMobile = false
-}: { 
-  reasoning: string; 
+}: {
+  reasoning: string;
   isActive: boolean;
   isMobile?: boolean;
 }) => {
@@ -134,10 +134,10 @@ const ReasoningTrace = ({
       {lines.map((line, index) => {
         const isCompleted = completedLines.has(index);
         const isCurrent = index === currentLine;
-        
+
         return (
-          <div 
-            key={index} 
+          <div
+            key={index}
             className={`${getLineColor(line)} ${line.trim() === '' ? 'h-2' : ''}`}
           >
             {isCompleted ? (
@@ -172,7 +172,7 @@ const DataShowcase = () => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
@@ -298,7 +298,7 @@ Step 2: Calculate total sales
       {/* Background */}
       <div className="absolute inset-0 bg-synth-black" />
       <div className="absolute inset-0 bg-gradient-to-b from-synth-black via-indigo-500/5 to-synth-black" />
-      
+
       {/* Subtle Synth Glitch Effect */}
       <div className="synth-glitch-bg">
         <div className="synth-glitch-line-subtle" />
@@ -311,7 +311,7 @@ Step 2: Calculate total sales
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column - Text Content */}
           <div className="data-heading">
-            <motion.span 
+            <motion.span
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -325,8 +325,8 @@ Step 2: Calculate total sales
               <span className="text-gradient-indigo">AI training</span>
             </h2>
             <p className="text-lg text-synth-gray mb-8 leading-relaxed">
-              The SYNTH format is designed specifically for training large language models 
-              with structured reasoning. Each entry contains a query, detailed reasoning 
+              The SYNTH format is designed specifically for training large language models
+              with structured reasoning. Each entry contains a query, detailed reasoning
               trace, and final answer - perfect for fine-tuning and RLHF.
             </p>
 
@@ -338,8 +338,8 @@ Step 2: Calculate total sales
                 'Verification and conclusion markers',
                 'Metadata for provenance tracking',
               ].map((feature, index) => (
-                <motion.div 
-                  key={index} 
+                <motion.div
+                  key={index}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -392,21 +392,19 @@ Step 2: Calculate total sales
                   {/* Tab Buttons */}
                   <button
                     onClick={() => handleTabChange('math')}
-                    className={`px-3 py-1 rounded text-xs font-mono transition-all duration-300 ${
-                      activeTab === 'math'
+                    className={`px-3 py-1 rounded text-xs font-mono transition-all duration-300 ${activeTab === 'math'
                         ? 'bg-indigo-500/20 text-indigo-400 border border-indigo-500/30'
                         : 'text-synth-gray hover:text-white'
-                    }`}
+                      }`}
                   >
                     Math
                   </button>
                   <button
                     onClick={() => handleTabChange('medical')}
-                    className={`px-3 py-1 rounded text-xs font-mono transition-all duration-300 ${
-                      activeTab === 'medical'
+                    className={`px-3 py-1 rounded text-xs font-mono transition-all duration-300 ${activeTab === 'medical'
                         ? 'bg-indigo-500/20 text-indigo-400 border border-indigo-500/30'
                         : 'text-synth-gray hover:text-white'
-                    }`}
+                      }`}
                   >
                     Medical
                   </button>
@@ -440,8 +438,8 @@ Step 2: Calculate total sales
                         <span className="text-slate-300">: </span>
                         <span className="text-emerald-400">"</span>
                         {hasStarted && (
-                          <TypingText 
-                            text={currentData.query} 
+                          <TypingText
+                            text={currentData.query}
                             isActive={isTyping}
                             speed={isMobile ? 25 : 12}
                           />
@@ -455,15 +453,15 @@ Step 2: Calculate total sales
                         <span className="text-indigo-400">"reasoning"</span>
                         <span className="text-slate-300">: </span>
                         <span className="text-emerald-400">"</span>
-                        <motion.div 
+                        <motion.div
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           transition={{ delay: 1.5 }}
                           className="ml-4 mt-2 p-3 rounded-lg bg-black/30 border border-emerald-500/20"
                         >
                           {hasStarted && (
-                            <ReasoningTrace 
-                              reasoning={currentData.reasoning} 
+                            <ReasoningTrace
+                              reasoning={currentData.reasoning}
                               isActive={isTyping}
                               isMobile={isMobile}
                             />
@@ -510,14 +508,14 @@ Step 2: Calculate total sales
             </div>
 
             {/* Floating Elements */}
-            <motion.div 
+            <motion.div
               animate={isMobile ? {} : { y: [0, -10, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
               className="absolute -top-4 -right-4 w-20 h-20 rounded-xl glass flex items-center justify-center"
             >
               <FileJson className="w-8 h-8 text-indigo-400" />
             </motion.div>
-            <motion.div 
+            <motion.div
               animate={isMobile ? {} : { y: [0, -10, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
               className="absolute -bottom-4 -left-4 w-16 h-16 rounded-xl glass flex items-center justify-center"
