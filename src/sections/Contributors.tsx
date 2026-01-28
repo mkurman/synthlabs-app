@@ -24,12 +24,19 @@ const Contributors = () => {
       avatar: 'https://github.com/Yamahammer.png',
       contributions: 'Bug fixes, UI improvements',
     },
+    {
+      name: 'Batuhan Özköse',
+      username: 'batuhanozkose',
+      role: 'Contributor',
+      avatar: 'https://github.com/batuhanozkose.png',
+      contributions: 'Code contributions and improvements',
+    },
   ];
 
   const stats = [
     { icon: Star, label: 'Stars', value: '27+' },
     { icon: GitPullRequest, label: 'Pull Requests', value: '2' },
-    { icon: Users, label: 'Contributors', value: '2' },
+    { icon: Users, label: 'Contributors', value: '3' },
     { icon: Code2, label: 'Commits', value: '28+' },
   ];
 
@@ -98,7 +105,7 @@ const Contributors = () => {
       {/* Background */}
       <div className="absolute inset-0 bg-synth-black" />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-synth-blue/5 to-transparent" />
-      
+
       {/* Subtle Synth Glitch Effect */}
       <div className="synth-glitch-bg">
         <div className="synth-glitch-line-subtle" />
@@ -119,7 +126,7 @@ const Contributors = () => {
             <span className="text-gradient-blue">community</span>
           </h2>
           <p className="text-lg text-synth-gray max-w-2xl mx-auto">
-            SynthLabs is an open-source project made possible by contributors 
+            SynthLabs is an open-source project made possible by contributors
             who believe in democratizing synthetic data generation.
           </p>
         </div>
@@ -186,8 +193,8 @@ const Contributors = () => {
             <div>
               <h4 className="text-white font-medium mb-2">AI-Powered Development</h4>
               <p className="text-synth-gray text-sm">
-                This project also benefits from AI coding assistants like GitHub Copilot 
-                and Claude, which help accelerate development. We believe in transparently 
+                This project also benefits from AI coding assistants like GitHub Copilot
+                and Claude, which help accelerate development. We believe in transparently
                 acknowledging AI contributions while highlighting human creativity and direction.
               </p>
             </div>
@@ -198,7 +205,7 @@ const Contributors = () => {
         <div className="max-w-3xl mx-auto text-center">
           <h3 className="text-xl font-semibold text-white mb-4">Project Origin</h3>
           <p className="text-synth-gray mb-6">
-            SynthLabs was born from the need for high-quality synthetic reasoning data 
+            SynthLabs was born from the need for high-quality synthetic reasoning data
             for training AI models. Inspired by the{' '}
             <a
               href="https://huggingface.co/datasets/PleIAs/SYNTH"
@@ -208,7 +215,7 @@ const Contributors = () => {
             >
               SYNTH dataset by PleIAs
             </a>
-            , we built a tool that makes it easy for anyone to generate their own 
+            , we built a tool that makes it easy for anyone to generate their own
             structured reasoning datasets.
           </p>
           <a

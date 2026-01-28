@@ -107,7 +107,7 @@
   /* iPhone notch specific adjustments */
   @supports (padding: max(0px)) {
     .hero-notch-adjust {
-      padding-top: max(2rem, env(safe-area-inset-top));
+      padding-top: max(2rem, calc(env(safe-area-inset-top) + 20px));
     }
   }
 }
