@@ -225,6 +225,16 @@ html {
   .grid-pattern {
     background-size: 30px 30px;
   }
+  
+  /* Prevent layout shifts during animations */
+  .data-showcase-terminal {
+    contain: layout style paint;
+    will-change: auto;
+  }
+  
+  .typing-text {
+    contain: layout;
+  }
 }
 
 /* Subtle Synth Data Glitch Effect - Very Light */

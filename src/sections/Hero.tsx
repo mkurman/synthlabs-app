@@ -255,7 +255,7 @@ const Hero = () => {
       {/* Content */}
       <div
         ref={textRef}
-        className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+        className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center hero-notch-adjust"
       >
         {/* Badge with Logo */}
         <div className={`hero-subheading inline-flex items-center gap-3 px-4 py-2 rounded-full glass mb-8 transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>

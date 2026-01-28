@@ -72,7 +72,7 @@ const TypingText = ({
   }, [isActive, isComplete, hideCursorOnComplete]);
 
   return (
-    <span className="relative">
+    <span className="relative typing-text">
       {displayedText}
       {(isTyping || showCursor) && (
         <motion.span
@@ -91,10 +91,12 @@ const TypingText = ({
 // Animated reasoning trace component
 const ReasoningTrace = ({ 
   reasoning, 
-  isActive 
+  isActive,
+  isMobile = false
 }: { 
   reasoning: string; 
   isActive: boolean;
+  isMobile?: boolean;
 }) => {
   const lines = reasoning.split('\n');
   const [completedLines, setCompletedLines] = useState<Set<number>>(new Set());
@@ -145,7 +147,7 @@ const ReasoningTrace = ({
                 text={line}
                 isActive={isActive}
                 onComplete={() => handleLineComplete(index)}
-                speed={index === 0 ? 20 : 12}
+                speed={isMobile ? (index === 0 ? 40 : 25) : (index === 0 ? 20 : 12)}
                 hideCursorOnComplete={true}
               />
             ) : null}
@@ -163,6 +165,18 @@ const DataShowcase = () => {
   const [activeTab, setActiveTab] = useState<'math' | 'medical'>('math');
   const [isTyping, setIsTyping] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile devices
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const synthData = {
     math: {
@@ -360,7 +374,7 @@ Step 2: Calculate total sales
           {/* Right Column - Terminal */}
           <div
             ref={terminalRef}
-            className="relative"
+            className="relative data-showcase-terminal"
             style={{ perspective: '1000px' }}
           >
             <div className="relative rounded-2xl overflow-hidden border border-synth-border/50 bg-[#0a0a0f] shadow-2xl">
@@ -410,82 +424,85 @@ Step 2: Calculate total sales
               </div>
 
               {/* Terminal Content with Typing Animation */}
-              <div className="p-4 font-mono text-sm overflow-x-auto min-h-[400px]">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeTab}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {/* Query Field */}
-                    <div className="mb-4">
-                      <span className="text-indigo-400">"query"</span>
-                      <span className="text-slate-300">: </span>
-                      <span className="text-emerald-400">"</span>
-                      {hasStarted && (
-                        <TypingText 
-                          text={currentData.query} 
-                          isActive={isTyping}
-                          speed={12}
-                        />
-                      )}
-                      <span className="text-emerald-400">"</span>
-                      <span className="text-slate-300">,</span>
-                    </div>
-
-                    {/* Reasoning Field */}
-                    <div className="mb-4">
-                      <span className="text-indigo-400">"reasoning"</span>
-                      <span className="text-slate-300">: </span>
-                      <span className="text-emerald-400">"</span>
-                      <motion.div 
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 1.5 }}
-                        className="ml-4 mt-2 p-3 rounded-lg bg-black/30 border border-emerald-500/20"
-                      >
+              <div className="p-4 font-mono text-sm overflow-x-auto min-h-[400px] max-h-[400px] relative">
+                <div className="absolute inset-0 p-4 overflow-y-auto">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={activeTab}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {/* Query Field */}
+                      <div className="mb-4">
+                        <span className="text-indigo-400">"query"</span>
+                        <span className="text-slate-300">: </span>
+                        <span className="text-emerald-400">"</span>
                         {hasStarted && (
-                          <ReasoningTrace 
-                            reasoning={currentData.reasoning} 
+                          <TypingText 
+                            text={currentData.query} 
                             isActive={isTyping}
+                            speed={isMobile ? 25 : 12}
                           />
                         )}
-                      </motion.div>
-                      <span className="text-emerald-400">"</span>
-                      <span className="text-slate-300">,</span>
-                    </div>
-
-                    {/* Answer Field */}
-                    <div className="mb-4">
-                      <span className="text-indigo-400">"answer"</span>
-                      <span className="text-slate-300">: </span>
-                      <span className="text-emerald-400">"</span>
-                      <span className="text-amber-400 font-semibold">{currentData.answer}</span>
-                      <span className="text-emerald-400">"</span>
-                      <span className="text-slate-300">,</span>
-                    </div>
-
-                    {/* Metadata */}
-                    <div>
-                      <span className="text-indigo-400">"metadata"</span>
-                      <span className="text-slate-300">: {'{'}</span>
-                      <div className="ml-4">
-                        <span className="text-indigo-400">"model"</span>
-                        <span className="text-slate-300">: </span>
-                        <span className="text-cyan-400">"{currentData.model}"</span>
+                        <span className="text-emerald-400">"</span>
                         <span className="text-slate-300">,</span>
                       </div>
-                      <div className="ml-4">
-                        <span className="text-indigo-400">"timestamp"</span>
+
+                      {/* Reasoning Field */}
+                      <div className="mb-4">
+                        <span className="text-indigo-400">"reasoning"</span>
                         <span className="text-slate-300">: </span>
-                        <span className="text-cyan-400">"{currentData.timestamp}"</span>
+                        <span className="text-emerald-400">"</span>
+                        <motion.div 
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: 1.5 }}
+                          className="ml-4 mt-2 p-3 rounded-lg bg-black/30 border border-emerald-500/20"
+                        >
+                          {hasStarted && (
+                            <ReasoningTrace 
+                              reasoning={currentData.reasoning} 
+                              isActive={isTyping}
+                              isMobile={isMobile}
+                            />
+                          )}
+                        </motion.div>
+                        <span className="text-emerald-400">"</span>
+                        <span className="text-slate-300">,</span>
                       </div>
-                      <span className="text-slate-300">{'}'}</span>
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
+
+                      {/* Answer Field */}
+                      <div className="mb-4">
+                        <span className="text-indigo-400">"answer"</span>
+                        <span className="text-slate-300">: </span>
+                        <span className="text-emerald-400">"</span>
+                        <span className="text-amber-400 font-semibold">{currentData.answer}</span>
+                        <span className="text-emerald-400">"</span>
+                        <span className="text-slate-300">,</span>
+                      </div>
+
+                      {/* Metadata */}
+                      <div>
+                        <span className="text-indigo-400">"metadata"</span>
+                        <span className="text-slate-300">: {'{'}</span>
+                        <div className="ml-4">
+                          <span className="text-indigo-400">"model"</span>
+                          <span className="text-slate-300">: </span>
+                          <span className="text-cyan-400">"{currentData.model}"</span>
+                          <span className="text-slate-300">,</span>
+                        </div>
+                        <div className="ml-4">
+                          <span className="text-indigo-400">"timestamp"</span>
+                          <span className="text-slate-300">: </span>
+                          <span className="text-cyan-400">"{currentData.timestamp}"</span>
+                        </div>
+                        <span className="text-slate-300">{'}'}</span>
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
               </div>
 
               {/* Glow Effect */}
@@ -494,14 +511,14 @@ Step 2: Calculate total sales
 
             {/* Floating Elements */}
             <motion.div 
-              animate={{ y: [0, -10, 0] }}
+              animate={isMobile ? {} : { y: [0, -10, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
               className="absolute -top-4 -right-4 w-20 h-20 rounded-xl glass flex items-center justify-center"
             >
               <FileJson className="w-8 h-8 text-indigo-400" />
             </motion.div>
             <motion.div 
-              animate={{ y: [0, -10, 0] }}
+              animate={isMobile ? {} : { y: [0, -10, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
               className="absolute -bottom-4 -left-4 w-16 h-16 rounded-xl glass flex items-center justify-center"
             >
