@@ -1,4 +1,4 @@
-import { Github, Twitter, Heart, ExternalLink, Cpu } from 'lucide-react';
+import { Github, Twitter, ExternalLink, Cpu } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -176,8 +176,8 @@ const Footer = () => {
             <p className="text-synth-gray text-sm">
               &copy; {currentYear} SynthLabs. Open source under Apache 2.0 License.
             </p>
-            <p className="text-synth-gray text-sm flex items-center gap-1">
-              Made with <Heart className="w-4 h-4 text-rose-500" /> by the community
+            <p className="text-synth-gray text-sm">
+              Apache 2.0 License
             </p>
           </div>
         </div>
